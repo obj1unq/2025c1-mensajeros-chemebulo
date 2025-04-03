@@ -1,101 +1,105 @@
 object paqueteDeGeorge {
+	var estaPago = false
 
+	method puedeSerEnviado(lugar, mensajero) = lugar.puedePasar(mensajero)
+
+	method estaPago() = estaPago
+
+	method pagar() {
+		estaPago = true
+	}
 }
 
-object puenteDeBrooklyn {
-    method puedePasar(mensajero) {
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    }
+object puenteDeBrooklyn {
+	method puedePasar(mensajero) {
+		mensajero.peso() < 1000
+	}
 }
 
 object matrix {
-
+	method puedePasar(mensajero) {
+		mensajero.puedeLlamar()
+	}
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 object chuckNorris {
-     const peso = 900
-
-     method peso() {
-        return peso
-    }
-
-    method puedeLlamar () {
-        return true
-    }
+	const peso = 900
+	
+	method peso() = peso
+	
+	method puedeLlamar() = true
 }
 
 object neo {
-    const peso = 0
+	const peso = 0
+	var credito = 100
 
-    var credito = 100
+	method llamar() {
+		if (credito >= 50) {
+			credito -= 50
+		} else {
+			credito = 0
+		}
+	}
 
-     method peso() {
-        return peso
-    }
-
-    method puedeLlamar() {
-        return credito > 0
-    }
-
+	method agregarCredito(cantidad) {
+		credito += cantidad
+	}
+	
+	method peso() = peso
+	
+	method puedeLlamar() = credito > 0
 }
 
 object lincolnHawk {
-    var peso = 80
-
-    var vehiculoActual = bici
-
-    method vehiculo (_vehiculo) {
-         vehiculoActual = _vehiculo
-    }
-
-    method peso () {
-        return peso + vehiculoActual.pesoQueTiene()
-    }
-
-    method puedeLlamar() {
-        return false
-    }
+	const peso = 80
+	var vehiculo = bici
+	
+	method vehiculo(_vehiculo) {
+		vehiculo = _vehiculo
+	}
+	
+	method vehiculo() = vehiculo
+	
+	method peso() = peso + self.vehiculo().peso()
+	
+	method puedeLlamar() = false
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 object bici {
-     method pesoQueTiene () {
-        return 10
-     }
+	method peso() = 10
 }
 
 object camion {
-    var acoplados = 0
-
-    const pesoDelCamion = 500
-
-    var pesoTotal = pesoDelCamion
-
-    method agregarAcoplado () {
-        acoplados += 1
-        pesoTotal += acoplado.pesoQueTiene()
-    }
-
-    method quitarAcoplado () {
-        if (acoplados > 0) {
-            acoplados -= 1
-            pesoTotal -= acoplado.pesoQueTiene()
-        } else {
-            acoplados += 0
-            pesoTotal += 0
-        }
-    }
- 
-    method cantidadDeAcoplados () {
-        return acoplados
-    }
-
-    method pesoQueTiene () {
-        return pesoTotal
-     }
+	var cantidadDeAcoplados = 0
+	var peso = 500
+	
+	method agregarAcoplado() {
+		cantidadDeAcoplados += 1
+		peso += acoplado.peso()
+	}
+	
+	method quitarAcoplado() {
+		if (cantidadDeAcoplados > 0) {
+			cantidadDeAcoplados -= 1
+			peso -= acoplado.peso()
+		} else {
+			cantidadDeAcoplados -= 0
+			peso -= 0
+		}
+	}
+	
+	method cantidadDeAcoplados() = cantidadDeAcoplados
+	
+	method peso() = peso
 }
 
 object acoplado {
-    method pesoQueTiene () {
-        return 500
-    }
+	method peso() = 500
 }
