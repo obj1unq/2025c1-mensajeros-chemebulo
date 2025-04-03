@@ -1,7 +1,9 @@
 object paqueteDeGeorge {
 	var estaPago = false
 
-	method puedeSerEnviado(lugar, mensajero) = lugar.puedePasar(mensajero)
+	method puedeSerEnviado(lugar, mensajero) {
+		return estaPago && lugar.puedePasar(mensajero)
+	}
 
 	method estaPago() = estaPago
 
@@ -14,13 +16,13 @@ object paqueteDeGeorge {
 
 object puenteDeBrooklyn {
 	method puedePasar(mensajero) {
-		mensajero.peso() < 1000
+		return mensajero.peso() < 1000
 	}
 }
 
 object matrix {
 	method puedePasar(mensajero) {
-		mensajero.puedeLlamar()
+		return mensajero.puedeLlamar()
 	}
 }
 
@@ -56,16 +58,18 @@ object neo {
 }
 
 object lincolnHawk {
-	const peso = 80
+	var peso = 80 + bici.peso()
 	var vehiculo = bici
 	
 	method vehiculo(_vehiculo) {
+		peso = peso - self.vehiculo().peso()
 		vehiculo = _vehiculo
+		peso = peso + self.vehiculo().peso()
 	}
 	
 	method vehiculo() = vehiculo
 	
-	method peso() = peso + self.vehiculo().peso()
+	method peso() = peso
 	
 	method puedeLlamar() = false
 }
