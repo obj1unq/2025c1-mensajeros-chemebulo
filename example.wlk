@@ -1,12 +1,12 @@
 object paqueteDeGeorge {
 	var estaPago = false
-
-	method puedeSerEnviado(lugar, mensajero) {
-		return estaPago && lugar.puedePasar(mensajero)
-	}
-
+	
+	method puedeSerEnviado(lugar, mensajero) = estaPago && lugar.puedePasar(
+		mensajero
+	)
+	
 	method estaPago() = estaPago
-
+	
 	method pagar() {
 		estaPago = true
 	}
@@ -15,18 +15,14 @@ object paqueteDeGeorge {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 object puenteDeBrooklyn {
-	method puedePasar(mensajero) {
-		return mensajero.peso() < 1000
-	}
+	method puedePasar(mensajero) = mensajero.peso() <= 1000
 }
 
 object matrix {
-	method puedePasar(mensajero) {
-		return mensajero.puedeLlamar()
-	}
+	method puedePasar(mensajero) = mensajero.puedeLlamar()
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 object chuckNorris {
 	const peso = 900
@@ -39,16 +35,17 @@ object chuckNorris {
 object neo {
 	const peso = 0
 	var credito = 100
-
+	
 	method llamar() {
+		// Es una forma linda para representar la orden de "gastarCredito", consideré interesante la existencia de este método (ya que existe "cargarCredito").
 		if (credito >= 50) {
 			credito -= 50
 		} else {
 			credito = 0
 		}
 	}
-
-	method agregarCredito(cantidad) {
+	
+	method cargarCredito(cantidad) {
 		credito += cantidad
 	}
 	
@@ -58,13 +55,14 @@ object neo {
 }
 
 object lincolnHawk {
+	// Inicializado con una bici por decisión propia, de todas formas con el setter "vehiculo" es posible cambiarlo a conveniencia. 
 	var peso = 80 + bici.peso()
 	var vehiculo = bici
 	
 	method vehiculo(_vehiculo) {
-		peso = peso - self.vehiculo().peso()
+		peso -= self.vehiculo().peso()
 		vehiculo = _vehiculo
-		peso = peso + self.vehiculo().peso()
+		peso += self.vehiculo().peso()
 	}
 	
 	method vehiculo() = vehiculo
@@ -74,13 +72,14 @@ object lincolnHawk {
 	method puedeLlamar() = false
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 object bici {
 	method peso() = 10
 }
 
 object camion {
+	// Inicializado sin acoplados por decisión propia, de todas formas con el método "agregarAcoplado" es posible cambiarlo a conveniencia.
 	var cantidadDeAcoplados = 0
 	var peso = 500
 	
