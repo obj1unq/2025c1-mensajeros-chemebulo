@@ -12,7 +12,7 @@ object paqueteDeGeorge {
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 object puenteDeBrooklyn {
 	method puedePasar(mensajero) = mensajero.peso() <= 1000
@@ -22,7 +22,7 @@ object matrix {
 	method puedePasar(mensajero) = mensajero.puedeLlamar()
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 object chuckNorris {
 	const peso = 900
@@ -37,7 +37,7 @@ object neo {
 	var credito = 100
 	
 	method llamar() {
-		// Es una forma linda para representar la orden de "gastarCredito", consideré interesante la existencia de este método (ya que existe "cargarCredito").
+		// Es una forma linda para representar la orden de "gastarCredito", consideré interesante la existencia de este método ya que existe "cargarCredito".
 		if (credito >= 50) {
 			credito -= 50
 		} else {
@@ -55,7 +55,7 @@ object neo {
 }
 
 object lincolnHawk {
-	// Inicializado con una bici por decisión propia, de todas formas con el setter "vehiculo" es posible cambiarlo a conveniencia. 
+	// Inicializado con una bici por decisión propia, de todas formas con el método "vehiculo (_vehiculo)" es posible cambiarlo a conveniencia. 
 	var peso = 80 + bici.peso()
 	var vehiculo = bici
 	
@@ -72,14 +72,14 @@ object lincolnHawk {
 	method puedeLlamar() = false
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 object bici {
 	method peso() = 10
 }
 
 object camion {
-	// Inicializado sin acoplados por decisión propia, de todas formas con el método "agregarAcoplado" es posible cambiarlo a conveniencia.
+	// Inicializado sin acoplados por decisión propia, de todas formas con el método "agregarAcoplado()" es posible cambiarlo a conveniencia.
 	var cantidadDeAcoplados = 0
 	var peso = 500
 	
