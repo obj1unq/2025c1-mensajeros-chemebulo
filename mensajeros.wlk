@@ -72,25 +72,17 @@ object bici {
 }
 
 object camion {
-	// Inicializado sin acoplados por decisión propia, de todas formas con el método "agregarAcoplado()" es posible cambiarlo a conveniencia.
-	var cantidadDeAcoplados = 0
+	// Inicializado sin acoplados por decisión propia, de todas formas con el setter "acoplados" es posible cambiarlo a conveniencia.
+	var acoplados = 0
 	const pesoPropio = 500
 	
-	method agregarAcoplado() {
-		cantidadDeAcoplados += 1
+	method acoplados(_acoplados) {
+		acoplados = _acoplados
 	}
 	
-	method quitarAcoplado() {
-		if (cantidadDeAcoplados > 0) {
-			cantidadDeAcoplados -= 1
-		} else {
-			cantidadDeAcoplados = 0
-		}
-	}
+	method acoplados() = acoplados
 	
-	method cantidadDeAcoplados() = cantidadDeAcoplados
-	
-	method peso() = pesoPropio + cantidadDeAcoplados * acoplado.peso()
+	method peso() = pesoPropio + acoplados * acoplado.peso()
 }
 
 object acoplado {
