@@ -11,7 +11,6 @@ object paqueteDeGeorge {
 		estaPago = true
 	}
 }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 object puenteDeBrooklyn {
@@ -21,7 +20,6 @@ object puenteDeBrooklyn {
 object matrix {
 	method puedePasar(mensajero) = mensajero.puedeLlamar()
 }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 object chuckNorris {
@@ -57,14 +55,13 @@ object lincolnHawk {
 	method vehiculo() = vehiculo
 	
 	method peso() = pesoPropio + vehiculo.peso()
-
+	
 	method pesoPropio(_pesoPropio) {
 		pesoPropio = _pesoPropio
 	}
 	
 	method puedeLlamar() = false
 }
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 object bici {
@@ -82,7 +79,7 @@ object camion {
 	
 	method acoplados() = acoplados
 	
-	method peso() = pesoPropio + acoplados * acoplado.peso()
+	method peso() = pesoPropio + (acoplados * acoplado.peso())
 }
 
 object acoplado {
